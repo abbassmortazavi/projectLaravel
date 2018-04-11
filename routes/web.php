@@ -11,18 +11,21 @@
 |
 */
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'laravel-crud'] , function (){
-    Route::get('/', 'CrudController@index');
-    Route::match(['get', 'post'], 'create', 'CrudController@create');
-    Route::match(['get', 'put'], 'update/{id}', 'CrudController@update');
-    Route::delete('delete/{id}', 'CrudController@delete');
+Route::get('admin', function () {
+    return view('admin.index');
 });
+
+Route::resource('admin/users' , 'AdminUserController');
 
 Auth::routes();
 
