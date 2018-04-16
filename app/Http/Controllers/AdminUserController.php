@@ -111,8 +111,9 @@ class AdminUserController extends Controller
         }
         else
         {
-            $input = $request->all();
+
             $input['password'] = bcrypt($request->password);
+            $input = $request->all();
         }
 
         $user = User::findOrFail($id);
