@@ -13,8 +13,6 @@
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,7 +23,10 @@ Route::get('admin', function () {
     return view('admin.index');
 });
 
-Route::resource('admin/users' , 'AdminUserController');
+Route::group(['middleware'=>'admin'] , function (){
+    Route::resource('admin/users' , 'AdminUserController');
+});
+
 
 Auth::routes();
 
