@@ -31,7 +31,7 @@
                     <td>{{ $user->updated_at->diffForHumans() }}</td>
                     <td>
                         <a href="{{ route('users.edit' , ['id' => $user->id]) }}">
-                            <img class="img-fluid" src="{{ $user->photo ? asset($user->photo->file) : "no photos" }}" style="width: 40%;">
+                            <img class="img-fluid" src="{{ $user->photo ? asset("images/users/".$user->photo->file) : "no photos" }}" style="width: 40%;">
                         </a>
 
                     </td>

@@ -24,7 +24,12 @@
                     <td>{{ $post->user->name }}</td>
                     <td>{{ $post->category_id }}</td>
                     <td>
-                        <img src="{{ asset($post->photo->file) }}">
+                        @if($post->photo)
+                            <img class="img-fluid" src="{{ asset("images/posts/".$post->photo->file) }}" style="width: 40%;">
+                            @else
+                            <h5>عکس ندارد</h5>
+                        @endif
+
                     </td>
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->body }}</td>
