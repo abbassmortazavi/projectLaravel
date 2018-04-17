@@ -19,7 +19,7 @@
     <link href="{{asset('css/libs/metisMenu.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs/sb-admin-2.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs/styles.css')}}" rel="stylesheet">
-
+    @yield('styles')
 
 </head>
 
@@ -164,11 +164,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/media">All Media</a>
+                                <a href="{{ route('photos.index') }}">All Media</a>
                             </li>
 
                             <li>
-                                <a href="">Upload Media</a>
+                                <a href="{{ route('photos.create') }}">Upload Media</a>
                             </li>
 
                         </ul>
@@ -346,7 +346,7 @@
 <script src="{{ asset('js/libs/metisMenu.js') }}"></script>
 <script src="{{ asset('js/libs/sb-admin-2.js') }}"></script>
 <script src="{{ asset('js/libs/scripts.js') }}"></script>
-
+@yield('script')
 @yield('footer')
 
 

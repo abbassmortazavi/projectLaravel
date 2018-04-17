@@ -27,6 +27,8 @@ Route::group(['middleware'=>'admin'] , function (){
     Route::resource('admin/users' , 'AdminUserController');
     Route::resource('admin/posts' , 'AdminPostController');
     Route::resource('admin/cats' , 'AdminCategoryController');
+    Route::resource('admin/photos' , 'AdminPhotoController');
+    //Route::get('admin/photo/upload' , 'AdminPhotoController@upload')->name('admin.photo.upload');
 });
 
 
