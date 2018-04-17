@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-sm-3">
-            <img class="img-fluid img-circle" src="{{ $user->photo ? asset($user->photo->file) : "No images" }}" style="width:100%;">
+            <img class="img-fluid img-circle" src="{{ $user->photo ? asset("images/users/".$user->photo->file) : "No images" }}" style="width:100%;">
         </div>
         <div class="col-sm-9">
             {!! Form::model($user,['method'=>'PATCH','action' => ['AdminUserController@update' , $user->id] , 'files' =>true]) !!}
