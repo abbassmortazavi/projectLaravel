@@ -37,7 +37,7 @@
 
                     </td>
                     <td>{{ $post->title }}</td>
-                    <td>{{ $post->body }}</td>
+                    <td>{{ str_limit($post->body , 35) }}</td>
                     <td>{{ $post->created_at->diffForhumans() }}</td>
                     <td>{{ $post->updated_at->diffForhumans() }}</td>
                 </tr>

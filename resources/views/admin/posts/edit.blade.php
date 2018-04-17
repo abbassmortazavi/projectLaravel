@@ -30,5 +30,14 @@
 
     {!! Form::close() !!}
 
+
+    {!! Form::model($post,['method'=>'DELETE','action' => ['AdminPostController@destroy' , $post->id]]) !!}
+
+    <div class="form-group">
+        {!! Form::submit('Delete Post' , ['class' => 'btn btn-danger']) !!}
+    </div>
+
+    {!! Form::close() !!}
+
     @include('includes.errors.error')
 @endsection

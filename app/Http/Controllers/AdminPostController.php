@@ -91,7 +91,19 @@ class AdminPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $input = $request->all();
+        if ($file = $request->file('photo_id'))
+        {
+            $fileName = time() . $file->getClientOriginalName();
+            $path = "images/posts/";
+            $file->move(public_path($path) , $fileName);
+
+            $photo = Photo::create(['file' => $fileName]);
+            $input['photo_id'] = $photo->id;
+        }
+
+        Auth::user()->post()->whereId($id)->first()->update($input);
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -102,6 +114,9 @@ class AdminPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        unlink(public_path('images/posts/') . $post->photo->file);
+        $post->delete();
+        return redirect(route('posts.index'));
     }
 }
