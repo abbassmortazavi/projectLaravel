@@ -25,7 +25,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -36,7 +36,8 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Category::create($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -58,7 +59,8 @@ class AdminCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit' , compact('category'));
     }
 
     /**
@@ -70,7 +72,8 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Category::findOrFail($id)->update($request->all());
+        return redirect(route('cats.index'));
     }
 
     /**
@@ -81,6 +84,7 @@ class AdminCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::findOrFail($id)->delete();
+        return redirect(route('cats.index'));
     }
 }

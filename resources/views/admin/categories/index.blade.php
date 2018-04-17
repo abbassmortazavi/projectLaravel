@@ -5,11 +5,11 @@
     <h1>Categories</h1>
 
     <div class="col-sm-6">
-        {!! Form::open(['action' => 'AdminCategoryController@store' , 'files'=>true]) !!}
+        {!! Form::open(['action' => 'AdminCategoryController@store']) !!}
 
         <div class="form-group">
-            {!! Form::label('category_id', 'Category') !!}
-            {!! Form::select('category_id',$categories, null , ['class' => 'form-control']) !!}
+            {!! Form::label('name', 'Name') !!}
+            {!! Form::text('name', null , ['class' => 'form-control']) !!}
         </div>
 
 
@@ -37,7 +37,11 @@
                 @foreach($categories as $cat)
                     <tr>
                         <td>{{ $cat->id }}</td>
-                        <td>{{ $cat->name }}</td>
+                        <td>
+                            <a href="{{ route('cats.edit' , ['id'=>$cat->id]) }}">
+                                {{ $cat->name }}
+                            </a>
+                        </td>
                         <td>{{ $cat->created_at ? $cat->created_at->diffForHumans() : "no date" }}</td>
                     </tr>
                 @endforeach
