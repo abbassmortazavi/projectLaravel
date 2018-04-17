@@ -66,7 +66,7 @@ class AdminPostController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -77,7 +77,9 @@ class AdminPostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $categories = Category::pluck('name' , 'id');
+        return view('admin.posts.edit' , compact('post' , 'categories'));
     }
 
     /**
@@ -89,7 +91,7 @@ class AdminPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

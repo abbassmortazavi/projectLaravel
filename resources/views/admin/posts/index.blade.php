@@ -25,8 +25,13 @@
                     <td>{{ $post->category ? $post->category->name : "No Category"}}</td>
                     <td>
                         @if($post->photo)
-                            <img class="img-fluid" src="{{ asset("images/posts/".$post->photo->file) }}" style="width: 40%;">
-                            @else
+                            <a href="{{ route('posts.edit' , ['id'=>$post->id]) }}">
+                                <img class="img-fluid" src="{{ asset("images/posts/".$post->photo->file) }}"
+                                     style="width: 40%;">
+                            </a>
+
+
+                        @else
                             <h5>عکس ندارد</h5>
                         @endif
 
