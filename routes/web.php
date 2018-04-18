@@ -28,7 +28,8 @@ Route::group(['middleware'=>'admin'] , function (){
     Route::resource('admin/posts' , 'AdminPostController');
     Route::resource('admin/cats' , 'AdminCategoryController');
     Route::resource('admin/photos' , 'AdminPhotoController');
-    //Route::get('admin/photo/upload' , 'AdminPhotoController@upload')->name('admin.photo.upload');
+    Route::resource('admin/comments' , 'PostCommentController');
+    Route::resource('admin/comment/replies' , 'CommentRepliesController');
 });
 
 
