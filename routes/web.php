@@ -19,11 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin', function () {
-    return view('admin.index');
-});
+Route::get('post/{id}' , 'AdminPostController@post')->name('home.post');
 
 Route::group(['middleware'=>'admin'] , function (){
+    Route::get('admin', function () {
+        return view('admin.index');
+    });
     Route::resource('admin/users' , 'AdminUserController');
     Route::resource('admin/posts' , 'AdminPostController');
     Route::resource('admin/cats' , 'AdminCategoryController');
