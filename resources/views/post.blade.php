@@ -36,14 +36,20 @@
     <!-- Comments Form -->
     <div class="well">
         <h4>Leave a Comment:</h4>
-        <form role="form">
-            <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
 
+        {!! Form::open(['method'=>'POST','action' => ['PostCommentController@store']]) !!}
 
+        <input type="hidden" name="post_id" value="{{ $post->id }}">
+        <div class="form-group">
+            {!! Form::label('body', 'Body') !!}
+            {!! Form::textarea('body', null , ['class' => 'form-control' , 'rows'=>'3']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::submit('Insert Comment' , ['class' => 'btn btn-info']) !!}
+        </div>
+
+        {!! Form::close() !!}
     </div>
 
     <hr>

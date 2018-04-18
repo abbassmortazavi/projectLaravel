@@ -21,6 +21,7 @@ class CreateCommentsTable extends Migration
             $table->integer('approve')->default(0);
             $table->string('email');
             $table->text('body');
+            $table->string('photo');
             $table->timestamps();
         });
     }
