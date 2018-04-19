@@ -12,6 +12,8 @@
             <th>imageId</th>
             <th>Title</th>
             <th>body</th>
+            <th>ViewPost</th>
+            <th>ViewComment</th>
             <th>Created</th>
             <th>Updated</th>
         </tr>
@@ -38,6 +40,8 @@
                     </td>
                     <td>{{ $post->title }}</td>
                     <td>{{ str_limit($post->body , 35) }}</td>
+                    <td><a href="{{ route('home.post' , $post->id) }}">View Post</a> </td>
+                    <td><a href="{{ route('comments.show' , $post->id) }}">View Comment</a> </td>
                     <td>{{ $post->created_at->diffForhumans() }}</td>
                     <td>{{ $post->updated_at->diffForhumans() }}</td>
                 </tr>
